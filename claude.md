@@ -342,6 +342,8 @@ donkey createcar --path ~/mycar
 | 資料名 | パス | 内容 |
 |--------|------|------|
 | Trixie互換性調査 | [docs/trixie_compatibility.md](docs/trixie_compatibility.md) | Raspberry Pi OS Trixie (Debian 13) の互換性調査 |
+| GPUサーバー構成ガイド | [docs/gpu_server_guide.md](docs/gpu_server_guide.md) | モデル学習用GPU環境、クラウドGPU、学習時間目安 |
+| Romihiリポジトリ分析 | [docs/romihi_repository_analysis.md](docs/romihi_repository_analysis.md) | 類似プロジェクト調査、活用可能なツール・ライブラリ |
 
 ---
 
@@ -372,3 +374,4 @@ donkey createcar --path ~/mycar
 | 2026年1月19日 | 初版作成 - 現状分析・Level 4ロードマップ策定 |
 | 2026年1月19日 | ターゲット環境確定: Raspberry Pi 4 + Bookworm + Donkey Car 5.1+ |
 | 2026年1月19日 | Trixie互換性調査を別資料として分離 (docs/trixie_compatibility.md) |
+| 2026年1月19日 | GPUサーバー構成ガイド追加、Romihiリポジトリ分析追加 |
