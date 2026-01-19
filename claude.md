@@ -337,145 +337,11 @@ donkey createcar --path ~/mycar
 
 ---
 
-## Raspberry Pi OS Trixie (Debian 13) 互換性調査
+## 関連資料
 
-**調査日**: 2026年1月19日
-
-### Trixie概要
-
-| 項目 | 内容 |
-|------|------|
-| **ベース** | Debian 13 "Trixie" |
-| **Debianリリース** | 2025年8月9日 |
-| **Raspberry Pi OSリリース** | 2025年10月2日 |
-| **Linuxカーネル** | 6.12 LTS |
-| **Python** | 3.13（デフォルト） |
-| **サポート期限** | 2030年6月30日（LTS含む） |
-
-### Donkey Car動作可否の判定
-
-#### 総合判定: ⚠️ **条件付きで動作可能**
-
-| コンポーネント | 状態 | 備考 |
-|---------------|------|------|
-| **Raspberry Pi 4** | ✅ 対応 | 32bit/64bit両対応 |
-| **Python 3.13** | ⚠️ 注意 | Donkey Car 5.1はPython 3.11向け設計 |
-| **TensorFlow** | ✅ 対応 | TensorFlow 2.20.0+ でPython 3.13対応 |
-| **PyTorch** | ✅ 対応 | 公式ARM64 wheel提供 |
-| **Picamera2** | ✅ 対応 | `apt install python3-picamera2` |
-| **lgpio (GPIO)** | ⚠️ 要対策 | Python 3.13用パッケージ未提供 |
-| **MediaPipe** | ❌ 非対応 | Python 3.13未対応 |
-
-### 主な課題と対策
-
-#### 課題1: Python 3.13互換性
-
-**問題**: Donkey Car 5.1はPython 3.11 + TensorFlow 2.15.Xで設計されている
-
-**対策**:
-```bash
-# TensorFlow 2.20.0以上をインストール（Python 3.13対応）
-pip install tensorflow>=2.20.0
-
-# または PyTorchベースのモデルを使用
-pip install torch torchvision
-```
-
-#### 課題2: GPIO (lgpio) 問題
-
-**問題**: lgpio Python 3.13向けパッケージが未提供
-
-**対策**:
-```bash
-# 仮想環境作成時に --system-site-packages を必ず指定
-python3 -m venv --system-site-packages ~/donkey_env
-source ~/donkey_env/bin/activate
-
-# システムのlgpioパッケージを使用
-sudo apt install python3-lgpio python3-rpi-lgpio
-```
-
-#### 課題3: Picamera2 初期不具合（解決済み）
-
-**問題**: libpisp/libcamera間のリンク問題（Trixieリリース初期）
-
-**対策**: 現在は修正済み
-```bash
-sudo apt update && sudo apt upgrade -y
-sudo apt install python3-picamera2
-# rpicam-hello で動作確認
-rpicam-hello
-```
-
-#### 課題4: MediaPipe非対応
-
-**問題**: MediaPipe（物体検出等）がPython 3.13に未対応
-
-**対策**:
-- 物体検出はYOLOv8 + Ultralytics（Python 3.13対応）を使用
-- または TensorFlow Lite + カスタムモデルを使用
-
-### Trixie vs Bookworm 比較
-
-| 項目 | Bookworm (推奨) | Trixie |
-|------|----------------|--------|
-| **安定性** | ✅ 高い | ⚠️ 一部パッケージ未整備 |
-| **Python** | 3.11 | 3.13 |
-| **Donkey Car互換** | ✅ 完全対応 | ⚠️ 要調整 |
-| **TensorFlow** | 2.15.x | 2.20.0+ |
-| **MediaPipe** | ✅ 対応 | ❌ 非対応 |
-| **サポート期限** | 2028年 | 2030年 |
-| **新機能** | - | 新UI、Control Centre等 |
-
-### Trixieインストール手順（使用する場合）
-
-```bash
-# 1. システム更新
-sudo apt update && sudo apt upgrade -y
-
-# 2. 必要なシステムパッケージ
-sudo apt install -y python3-pip python3-venv python3-dev \
-    python3-lgpio python3-rpi-lgpio python3-picamera2 \
-    libatlas-base-dev libopenjp2-7 libtiff6 libcap-dev
-
-# 3. I2C/SPI/カメラ有効化
-sudo raspi-config  # Interface Options
-
-# 4. 仮想環境作成（--system-site-packages 必須）
-python3 -m venv --system-site-packages ~/donkey_env
-source ~/donkey_env/bin/activate
-
-# 5. TensorFlow 2.20+インストール
-pip install tensorflow>=2.20.0
-
-# 6. Donkey Car インストール
-pip install donkeycar[pi]
-
-# 7. 動作確認
-python -c "import tensorflow as tf; print(tf.__version__)"
-python -c "from picamera2 import Picamera2; print('Picamera2 OK')"
-```
-
-### 推奨判定
-
-| ユースケース | 推奨OS |
-|-------------|--------|
-| **安定運用・本番環境** | Bookworm（推奨） |
-| **最新機能検証・実験** | Trixie（条件付き可） |
-| **MediaPipe使用** | Bookworm（必須） |
-| **長期サポート重視** | Trixie（2030年まで） |
-
-### 結論
-
-**現時点での推奨: Raspberry Pi OS Bookworm (64-bit)**
-
-理由:
-1. Donkey Car 5.1との完全互換性
-2. すべての依存パッケージが安定動作
-3. MediaPipe等の追加ライブラリも利用可能
-4. 十分なサポート期間（2028年まで）
-
-Trixieは将来的に主流となるため、Bookwormで開発・安定動作確認後、Trixie移行を検討することを推奨。
+| 資料名 | パス | 内容 |
+|--------|------|------|
+| Trixie互換性調査 | [docs/trixie_compatibility.md](docs/trixie_compatibility.md) | Raspberry Pi OS Trixie (Debian 13) の互換性調査 |
 
 ---
 
@@ -486,16 +352,13 @@ Trixieは将来的に主流となるため、Bookwormで開発・安定動作確
 - [Donkey Car GitHub](https://github.com/autorope/donkeycar)
 - [Donkey Car Raspberry Pi Setup](https://docs.donkeycar.com/guide/robot_sbc/setup_raspberry_pi/)
 
-### Raspberry Pi OS
+### Raspberry Pi
 - [Raspberry Pi Documentation](https://www.raspberrypi.com/documentation/)
-- [Raspberry Pi OS Trixie リリースノート](https://www.raspberrypi.com/news/trixie-the-new-version-of-raspberry-pi-os/)
-- [Debian 13 Trixie リリース情報](https://www.debian.org/releases/trixie/)
 - [Picamera2 Manual](https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf)
 
 ### 機械学習
 - [TensorFlow Lite for Raspberry Pi](https://www.tensorflow.org/lite/guide/python)
 - [PyTorch ARM64](https://mathinf.eu/pytorch/arm64/)
-- [TensorFlow Python 3.13対応 (PyPI)](https://pypi.org/project/tensorflow/)
 
 ### 自動運転
 - [SAE J3016 自動運転レベル定義](https://www.sae.org/standards/content/j3016_202104/)
@@ -508,4 +371,4 @@ Trixieは将来的に主流となるため、Bookwormで開発・安定動作確
 |------|------|
 | 2026年1月19日 | 初版作成 - 現状分析・Level 4ロードマップ策定 |
 | 2026年1月19日 | ターゲット環境確定: Raspberry Pi 4 + Bookworm + Donkey Car 5.1+ |
-| 2026年1月19日 | Trixie (Debian 13) 互換性調査追加 - 条件付き動作可能、Bookworm推奨 |
+| 2026年1月19日 | Trixie互換性調査を別資料として分離 (docs/trixie_compatibility.md) |
