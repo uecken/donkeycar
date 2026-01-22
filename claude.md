@@ -348,6 +348,7 @@ donkey createcar --path ~/mycar
 | 学習環境クイックガイド | [docs/20260122-1230_Donkey_Car学習環境クイックガイド.md](docs/20260122-1230_Donkey_Car学習環境クイックガイド.md) | 推奨2構成、Cloudflare Tunnel、セットアップ手順 |
 | 学習環境構築ガイド（詳細版） | [docs/20260122-1200_Donkey_Car学習環境構築ガイド.md](docs/20260122-1200_Donkey_Car学習環境構築ガイド.md) | PC要件、GPU互換性、詳細手順、トラブルシューティング |
 | WSL2環境セットアップ記録 | [docs/20260122-1510_WSL2学習環境セットアップ記録.md](docs/20260122-1510_WSL2学習環境セットアップ記録.md) | 実施手順、起動方法、利用方法 |
+| Cloudflare Tunnel設定ガイド | [docs/20260122-1530_Cloudflare_Tunnel設定ガイド.md](docs/20260122-1530_Cloudflare_Tunnel設定ガイド.md) | 外出先からのSSHアクセス設定 |
 
 ### 外部リポジトリ（refs/）
 
