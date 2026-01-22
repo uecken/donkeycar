@@ -345,6 +345,9 @@ donkey createcar --path ~/mycar
 | GPUサーバー構成ガイド | [docs/gpu_server_guide.md](docs/gpu_server_guide.md) | モデル学習用GPU環境、クラウドGPU、学習時間目安 |
 | Romihiリポジトリ分析 | [docs/romihi_repository_analysis.md](docs/romihi_repository_analysis.md) | 類似プロジェクト調査、活用可能なツール・ライブラリ |
 | annotation_training_d2jガイド | [docs/annotation_training_d2j_guide.md](docs/annotation_training_d2j_guide.md) | 高機能アノテーション・学習統合ツール詳細 |
+| 学習環境クイックガイド | [docs/20260122-1230_Donkey_Car学習環境クイックガイド.md](docs/20260122-1230_Donkey_Car学習環境クイックガイド.md) | 推奨2構成、Cloudflare Tunnel、セットアップ手順 |
+| 学習環境構築ガイド（詳細版） | [docs/20260122-1200_Donkey_Car学習環境構築ガイド.md](docs/20260122-1200_Donkey_Car学習環境構築ガイド.md) | PC要件、GPU互換性、詳細手順、トラブルシューティング |
+| WSL2環境セットアップ記録 | [docs/20260122-1510_WSL2学習環境セットアップ記録.md](docs/20260122-1510_WSL2学習環境セットアップ記録.md) | 実施手順、起動方法、利用方法 |
 
 ### 外部リポジトリ（refs/）
 
