@@ -33,3 +33,33 @@
 | `C:\Users\thefu\Documents\donkeycar\` | `/mnt/c/Users/thefu/Documents/donkeycar/` |
 | WSL2ホーム | `/home/kenji/` |
 | Windowsからアクセス | `\\wsl$\Ubuntu-22.04\home\kenji\` |
+
+## ユーティリティスクリプト
+
+### スクリプト一覧
+| スクリプト | パス | 用途 |
+|-----------|------|------|
+| start-tunnel.sh | `/home/kenji/scripts/` | Cloudflare Quick Tunnel起動 |
+| import-data.sh | `/home/kenji/scripts/` | 学習データインポート |
+
+### Cloudflare Tunnel（外部アクセス）
+```bash
+# SSHトンネル起動（ターミナル1）
+/home/kenji/scripts/start-tunnel.sh ssh
+
+# Donkey Car UIトンネル起動（ターミナル2）
+/home/kenji/scripts/start-tunnel.sh web
+```
+※ Quick Tunnelは一時URLを発行（毎回変わる）
+
+### 学習データインポート
+```bash
+# Raspberry Piからインポート
+/home/kenji/scripts/import-data.sh pi@192.168.1.100:~/mycar/data/tub_*
+
+# Windows側からインポート
+/home/kenji/scripts/import-data.sh /mnt/c/Users/thefu/Downloads/tub_data
+
+# ローカルからインポート
+/home/kenji/scripts/import-data.sh /path/to/tub_data
+```
