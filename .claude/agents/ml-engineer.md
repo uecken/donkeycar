@@ -22,6 +22,14 @@ Donkey Carの機械学習モデル開発、学習、最適化を担当。
 - 学習環境: WSL2 GPU / Google Colab
 - 作業フォルダ: `picopico_racers/docs/agents/ml-engineer/`
 
+## Git ブランチ運用（重要）
+**picopico_racersでの作業は `feature/add-m5c-joycon` ブランチで行うこと**
+
+```bash
+cd picopico_racers
+git checkout feature/add-m5c-joycon  # 作業ブランチに切替
+```
+
 ## Key Commands
 ```bash
 # 学習

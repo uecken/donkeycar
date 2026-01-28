@@ -20,6 +20,22 @@
 - 学習: WSL2 Ubuntu + GPU
 - 作業フォルダ: `picopico_racers/docs/agents/devops-engineer/`
 
+## Git ブランチ運用（重要）
+**picopico_racersでの作業は `feature/add-m5c-joycon` ブランチで行うこと**
+
+```bash
+cd picopico_racers
+git checkout feature/add-m5c-joycon  # 作業ブランチに切替
+# ... 作業 ...
+git add . && git commit -m "変更内容"
+git push origin feature/add-m5c-joycon
+```
+
+| リポジトリ | 作業ブランチ | リモート |
+|-----------|-------------|---------|
+| donkeycar | main | uecken/donkeycar |
+| picopico_racers | **feature/add-m5c-joycon** | fumipi/picopico_racers |
+
 ## Key Commands
 ```bash
 # SSH接続
