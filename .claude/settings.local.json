@@ -6,7 +6,21 @@
       "WebSearch",
       "Bash(git remote:*)",
       "Bash(git remote add:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd Level 4 autonomous driving project documentation\n\n- Add claude.md with project overview, roadmap, and hardware specs\n- Target: Raspberry Pi 4 + Bookworm/Trixie + Donkey Car 5.1+\n- Include Trixie \\(Debian 13\\) compatibility analysis\n- Add development environment setup instructions\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(git clone:*)",
+      "WebFetch(domain:docs.donkeycar.com)",
+      "WebFetch(domain:developer.nvidia.com)",
+      "WebFetch(domain:colab.research.google.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:jonathantse.medium.com)",
+      "Bash(ren:*)",
+      "Bash(wsl:*)",
+      "Bash(nvidia-smi:*)",
+      "Bash(timeout 120 tail:*)"
     ]
   }
 }

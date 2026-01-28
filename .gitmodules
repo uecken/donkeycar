@@ -1,0 +1,3 @@
+[submodule "picopico_racers"]
+	path = picopico_racers
+	url = https://github.com/fumipi/picopico_racers
