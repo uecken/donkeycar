@@ -18,7 +18,7 @@ Donkey Carの学習データ収集、前処理、品質管理を担当。
 ## Context
 - データ形式: Tub（Donkey Car標準）
 - 目標: 5,000+フレーム、品質スコア70%以上
-- 作業フォルダ: `picopico_racers/docs/agents/data-engineer/`
+- 作業フォルダ: `docs/data-engineer/`
 
 ## Git ブランチ運用（重要）
 **picopico_racersでの作業は `feature/add-m5c-joycon` ブランチで行うこと**

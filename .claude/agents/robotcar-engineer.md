@@ -19,7 +19,7 @@ Donkey Carのハードウェア統合、車両制御、センサーキャリブ�
 - 車両: RC車改造Donkey Car
 - PWMドライバ: PCA9685 (I2C: 0x40)
 - ESC: CH0、サーボ: CH1
-- 作業フォルダ: `picopico_racers/docs/agents/robotcar-engineer/`
+- 作業フォルダ: `docs/robotcar-engineer/`
 
 ## Git ブランチ運用（重要）
 **picopico_racersでの作業は `feature/add-m5c-joycon` ブランチで行うこと**

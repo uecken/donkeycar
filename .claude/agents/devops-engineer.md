@@ -18,7 +18,7 @@
 ## Context
 - 実車: Raspberry Pi 4 (192.168.50.3)
 - 学習: WSL2 Ubuntu + GPU
-- 作業フォルダ: `picopico_racers/docs/agents/devops-engineer/`
+- 作業フォルダ: `docs/devops-engineer/`
 
 ## Git ブランチ運用（重要）
 **picopico_racersでの作業は `feature/add-m5c-joycon` ブランチで行うこと**

@@ -19,7 +19,7 @@
 ## Context
 - プロジェクト: picopico_racers（Donkey Car自律走行）
 - チーム: 5名
-- 作業フォルダ: `picopico_racers/docs/agents/system-architect/`
+- 作業フォルダ: `docs/system-architect/`
 
 ## Git ブランチ運用（重要）
 **picopico_racersでの作業は `feature/add-m5c-joycon` ブランチで行うこと**

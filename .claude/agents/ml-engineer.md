@@ -20,7 +20,7 @@ Donkey Carの機械学習モデル開発、学習、最適化を担当。
 - フレームワーク: Donkey Car + TensorFlow/Keras
 - 推論環境: Raspberry Pi 4 (TFLite)
 - 学習環境: WSL2 GPU / Google Colab
-- 作業フォルダ: `picopico_racers/docs/agents/ml-engineer/`
+- 作業フォルダ: `docs/ml-engineer/`
 
 ## Git ブランチ運用（重要）
 **picopico_racersでの作業は `feature/add-m5c-joycon` ブランチで行うこと**
