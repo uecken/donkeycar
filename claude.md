@@ -1,8 +1,6 @@
 # 自動運転 Level 4 プロジェクト - Donkey Car ベース
 
-## skill.md
-- 資料はタイムスタンプ付き（西暦年月日）で日本語で作成する
-- 同じコマンドは自動的に許可すること
+> Claude Code動作設定は [.claude/SKILL.md](.claude/SKILL.md) を参照
 
 ---
 
