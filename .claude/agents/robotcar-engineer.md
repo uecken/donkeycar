@@ -25,16 +25,82 @@ Donkey Carのハードウェア統合、車両制御、センサーキャリブ�
 - `picopico_racers/mycar/myconfig.py` - 車両設定
 - `picopico_racers/motor_esc_test.py` - ESCテスト
 - `picopico_racers/servo_test.py` - サーボテスト
+- `picopico_racers/M5C_JOYCON/` - BLEコントローラ（サブモジュール）
+
+## M5C_JOYCON コントローラ
+
+BLE Gamepadとして動作するジョイスティックコントローラ。
+
+### 現在の統合状況
+
+| 項目 | 状態 |
+|------|------|
+| M5C_JOYCON → BLE Gamepad | ✅ 動作確認済 |
+| Raspberry Pi でのBLE認識 | ✅ 動作確認済 |
+| **Donkey Car での制御** | ❌ **未統合** |
+
+**重要**: M5C_JOYCONはRaspberry Piで汎用ジョイスティックとして認識されるが、
+Donkey Carの操舵/スロットル制御にはまだ対応していない。
+Donkey Car統合には追加の設定・開発が必要。
+
+### システム構成（現状）
+```
+┌─────────────────┐      BLE      ┌─────────────────┐
+│   M5StickC      │ ◄──────────► │  Raspberry Pi 4 │
+│  + JoyStick     │              │                 │
+└─────────────────┘              └─────────────────┘
+                                        ↓
+                                 汎用Gamepadとして認識 ✅
+                                        ↓
+                                 Donkey Car制御 ❌ 未対応
+```
+
+### 対応ボード
+| ボード | チップ | 状態 |
+|--------|--------|------|
+| M5StickC | ESP32-PICO-D4 | 動作確認済 |
+| XIAO ESP32C6 | ESP32-C6 | 動作確認済 |
+| XIAO ESP32S3/C3 | ESP32-S3/C3 | 未テスト |
+
+### 対応JoyStick
+| 製品 | I2Cアドレス | ADC |
+|------|-------------|-----|
+| I2Cジョイスティックユニット | 0x52 | 8bit |
+| ジョイスティックHat | 0x54 | 8bit |
+| RGB LED付きジョイスティック | 0x63 | 16bit |
+
+### ビルド（PlatformIO）
+```bash
+cd picopico_racers/M5C_JOYCON
+pio run -e m5stick-c       # M5StickC用
+pio run -e xiao_esp32c6    # XIAO ESP32C6用
+pio run -t upload          # アップロード
+```
+
+### 軸の値範囲
+| 項目 | 値 |
+|------|-----|
+| 最小値 | 0 |
+| 中心値 | 16383 |
+| 最大値 | 32767 |
 
 ## Responsibilities
 1. ESC/サーボのPWMキャリブレーション
 2. センサー統合（カメラ、超音波等）
 3. myconfig.py の調整・最適化
 4. ハードウェアトラブルシューティング
-5. M5C_JOYCONコントローラ統合
+5. M5C_JOYCONコントローラ統合・ビルド
 
 ## Safety
 - ESCテスト前: 車輪を浮かせる
 - 作業時: ESC電源OFF
 - 走行テスト: 周囲の安全確認
 - 緊急時: 即座に電源切断
+
+## TODO (優先度順)
+1. [ ] **M5C_JOYCON → Donkey Car統合**
+   - Donkey Car controller設定でBLE Gamepadを認識させる
+   - myconfig.pyでコントローラタイプ設定
+   - 軸マッピング（JoyStick軸 → 操舵/スロットル）
+2. [ ] M5C_JOYCONとRaspberry PiのBLEペアリング安定化
+3. [ ] 超音波センサーの統合
