@@ -1,6 +1,30 @@
 # 自動運転 Level 4 プロジェクト - Donkey Car ベース
 
-> Claude Code動作設定は [.claude/SKILL.md](.claude/SKILL.md) を参照
+## Claude Code 動作ルール
+
+### 基本ルール
+- 資料はタイムスタンプ付き（YYYYMMDD-HHMM_タイトル.md）で日本語作成
+- 同じコマンドは自動的に許可すること
+
+### Git ブランチ運用（重要）
+| リポジトリ | 作業ブランチ | リモート |
+|-----------|-------------|---------|
+| donkeycar | `main` | uecken/donkeycar |
+| picopico_racers | **`feature/add-m5c-joycon`** | fumipi/picopico_racers |
+
+### エージェント構成
+| エージェント | 定義ファイル |
+|-------------|-------------|
+| system-architect | `.claude/agents/system-architect.md` |
+| robotcar-engineer | `.claude/agents/robotcar-engineer.md` |
+| ml-engineer | `.claude/agents/ml-engineer.md` |
+| data-engineer | `.claude/agents/data-engineer.md` |
+| devops-engineer | `.claude/agents/devops-engineer.md` |
+
+### 環境情報
+- **実車**: Raspberry Pi 4 (`ssh koito@192.168.50.3`)
+- **学習**: WSL2 Ubuntu-22.04 + GTX 1660 Ti
+- 詳細は `.claude/SKILL.md` を参照（必要時に読むこと）
 
 ---
 
