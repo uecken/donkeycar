@@ -339,17 +339,43 @@ donkey createcar --path ~/mycar
 
 ## 関連資料
 
-| 資料名 | パス | 内容 |
-|--------|------|------|
-| Trixie互換性調査 | [docs/trixie_compatibility.md](docs/trixie_compatibility.md) | Raspberry Pi OS Trixie (Debian 13) の互換性調査 |
-| GPUサーバー構成ガイド | [docs/gpu_server_guide.md](docs/gpu_server_guide.md) | モデル学習用GPU環境、クラウドGPU、学習時間目安 |
-| Romihiリポジトリ分析 | [docs/romihi_repository_analysis.md](docs/romihi_repository_analysis.md) | 類似プロジェクト調査、活用可能なツール・ライブラリ |
-| annotation_training_d2jガイド | [docs/annotation_training_d2j_guide.md](docs/annotation_training_d2j_guide.md) | 高機能アノテーション・学習統合ツール詳細 |
-| 学習環境クイックガイド | [docs/20260122-1230_Donkey_Car学習環境クイックガイド.md](docs/20260122-1230_Donkey_Car学習環境クイックガイド.md) | 推奨2構成、Cloudflare Tunnel、セットアップ手順 |
-| 学習環境構築ガイド（詳細版） | [docs/20260122-1200_Donkey_Car学習環境構築ガイド.md](docs/20260122-1200_Donkey_Car学習環境構築ガイド.md) | PC要件、GPU互換性、詳細手順、トラブルシューティング |
-| WSL2環境セットアップ記録 | [docs/20260122-1510_WSL2学習環境セットアップ記録.md](docs/20260122-1510_WSL2学習環境セットアップ記録.md) | 実施手順、起動方法、利用方法 |
-| Cloudflare Tunnel設定ガイド | [docs/20260122-1530_Cloudflare_Tunnel設定ガイド.md](docs/20260122-1530_Cloudflare_Tunnel設定ガイド.md) | 外出先からのSSHアクセス設定 |
-| Gitサブモジュール管理ガイド | [docs/20260128-1600_Gitサブモジュール管理ガイド.md](docs/20260128-1600_Gitサブモジュール管理ガイド.md) | サブモジュールの開発・管理方法、注意点 |
+### エージェント別ドキュメント構成
+
+```
+docs/
+├── system-architect/     # 設計・技術調査
+├── robotcar-engineer/    # ハードウェア
+├── ml-engineer/          # 機械学習
+├── data-engineer/        # データ管理
+└── devops-engineer/      # 環境構築・インフラ
+```
+
+### system-architect（設計・技術調査）
+| 資料名 | パス |
+|--------|------|
+| Trixie互換性調査 | [docs/system-architect/trixie_compatibility.md](docs/system-architect/trixie_compatibility.md) |
+| Romihiリポジトリ分析 | [docs/system-architect/romihi_repository_analysis.md](docs/system-architect/romihi_repository_analysis.md) |
+
+### ml-engineer（機械学習）
+| 資料名 | パス |
+|--------|------|
+| GPUサーバー構成ガイド | [docs/ml-engineer/gpu_server_guide.md](docs/ml-engineer/gpu_server_guide.md) |
+| annotation_training_d2jガイド | [docs/ml-engineer/annotation_training_d2j_guide.md](docs/ml-engineer/annotation_training_d2j_guide.md) |
+| 学習環境パフォーマンス比較 | [docs/ml-engineer/20260122-1910_学習環境パフォーマンス比較.md](docs/ml-engineer/20260122-1910_学習環境パフォーマンス比較.md) |
+
+### data-engineer（データ管理）
+| 資料名 | パス |
+|--------|------|
+| 外部アクセス・データ転送ガイド | [docs/data-engineer/20260125-1440_外部アクセス・データ転送ガイド.md](docs/data-engineer/20260125-1440_外部アクセス・データ転送ガイド.md) |
+
+### devops-engineer（環境構築・インフラ）
+| 資料名 | パス |
+|--------|------|
+| 学習環境構築ガイド（詳細版） | [docs/devops-engineer/20260122-1200_Donkey_Car学習環境構築ガイド.md](docs/devops-engineer/20260122-1200_Donkey_Car学習環境構築ガイド.md) |
+| 学習環境クイックガイド | [docs/devops-engineer/20260122-1230_Donkey_Car学習環境クイックガイド.md](docs/devops-engineer/20260122-1230_Donkey_Car学習環境クイックガイド.md) |
+| WSL2環境セットアップ記録 | [docs/devops-engineer/20260122-1510_WSL2学習環境セットアップ記録.md](docs/devops-engineer/20260122-1510_WSL2学習環境セットアップ記録.md) |
+| Cloudflare Tunnel設定ガイド | [docs/devops-engineer/20260122-1530_Cloudflare_Tunnel設定ガイド.md](docs/devops-engineer/20260122-1530_Cloudflare_Tunnel設定ガイド.md) |
+| Gitサブモジュール管理ガイド | [docs/devops-engineer/20260128-1600_Gitサブモジュール管理ガイド.md](docs/devops-engineer/20260128-1600_Gitサブモジュール管理ガイド.md) |
 
 ### 外部リポジトリ（refs/）
 
