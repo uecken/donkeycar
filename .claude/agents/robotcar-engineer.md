@@ -95,12 +95,21 @@ pio run -t upload          # アップロード
 | 中心値 | 16383 |
 | 最大値 | 32767 |
 
+## Sub-Agents
+専門サブエージェント:
+| サブエージェント | 担当 | 定義ファイル |
+|----------------|------|-------------|
+| motor-test-engineer | ESC/モーターテスト | `.claude/agents/motor-test-engineer.md` |
+| servo-test-engineer | サーボテスト | `.claude/agents/servo-test-engineer.md` |
+| robot-controller-engineer | M5C_JOYCON統合 | `.claude/agents/robot-controller-engineer.md` |
+
 ## Responsibilities
 1. ESC/サーボのPWMキャリブレーション
 2. センサー統合（カメラ、超音波等）
 3. myconfig.py の調整・最適化
 4. ハードウェアトラブルシューティング
 5. M5C_JOYCONコントローラ統合・ビルド
+6. サブエージェント（motor/servo-test-engineer）の管理・調整
 
 ## Safety
 - ESCテスト前: 車輪を浮かせる

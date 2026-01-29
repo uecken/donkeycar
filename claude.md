@@ -17,6 +17,9 @@
 |-------------|-------------|
 | system-architect | `.claude/agents/system-architect.md` |
 | robotcar-engineer | `.claude/agents/robotcar-engineer.md` |
+| ├─ motor-test-engineer | `.claude/agents/motor-test-engineer.md` |
+| ├─ servo-test-engineer | `.claude/agents/servo-test-engineer.md` |
+| └─ robot-controller-engineer | `.claude/agents/robot-controller-engineer.md` |
 | ml-engineer | `.claude/agents/ml-engineer.md` |
 | data-engineer | `.claude/agents/data-engineer.md` |
 | devops-engineer | `.claude/agents/devops-engineer.md` |
