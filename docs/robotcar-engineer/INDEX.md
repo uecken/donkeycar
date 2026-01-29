@@ -171,18 +171,35 @@
 - コンデンサは突入電流による電圧降下を緩和
 - I2C経由（PCA9685）でPWM信号を生成しESCを制御
 
-### HBX 2192の推奨構成
+### HBX 2192の現在の構成（採用済み）
 
 ```
-構成B: SERVO_HBRIDGE_3PIN + DRV8835（推奨）
+構成: PCA9685 + 付属赤基板ESC（実稼働中）
+├── Raspberry Pi 4
+│   └── I2C (GPIO 2,3)
+│           └── PCA9685 (0x40)
+│                   ├── Ch0 → ステアリングサーボ（5線式）
+│                   └── Ch1 → 赤基板ESC → 370モーター
+│
+└── 電源安定化: ESC VCC-GND間に470μF/25V電解コンデンサ追加
+```
+
+**myconfig.py設定**:
+- `DRIVE_TRAIN_TYPE = "PWM_STEERING_THROTTLE"`
+- `THROTTLE_FORWARD_PWM = 330` (1610μs)
+- `THROTTLE_STOPPED_PWM = 307` (1500μs)
+- `THROTTLE_REVERSE_PWM = 281` (1370μs)
+
+### 代替構成（参考）
+
+```
+構成B: SERVO_HBRIDGE_3PIN + DRV8835
 ├── GPIO18 (PWM0) → サーボ信号
 ├── GPIO17 (TTL)  → DRV8835 APHASE（方向）
 ├── GPIO13 (PWM1) → DRV8835 AENBL（速度）
-└── 370モーター（既存流用）
+└── 370モーター
 
-電源安定化: ESC VCC-GND間に470μF/25V電解コンデンサ追加
-
-合計コスト: 約1,050円（DRV8835 550円 + MG90Sサーボ 500円）
+※ 赤基板ESCを使わず、モータードライバーICで直接制御する場合の構成
 ```
 
 ---
@@ -198,3 +215,4 @@
 | 2026年1月29日 | DonkeyCar起動ガイド追加 |
 | 2026年1月29日 | M5C_JOYCON動作問題調査追加（BLE切断、モーター不動作） |
 | 2026年1月29日 | ESC突入電流問題と解決策（470μFコンデンサ）を追記 |
+| 2026年1月29日 | 現在の構成を明確化: PCA9685 + 付属赤基板ESC（DRV8835は代替構成に変更） |
