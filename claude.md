@@ -387,6 +387,8 @@ docs/
 | GPUサーバー構成ガイド | [docs/ml-engineer/gpu_server_guide.md](docs/ml-engineer/gpu_server_guide.md) |
 | annotation_training_d2jガイド | [docs/ml-engineer/annotation_training_d2j_guide.md](docs/ml-engineer/annotation_training_d2j_guide.md) |
 | 学習環境パフォーマンス比較 | [docs/ml-engineer/20260122-1910_学習環境パフォーマンス比較.md](docs/ml-engineer/20260122-1910_学習環境パフォーマンス比較.md) |
+| 自動運転モデル動作確認ガイド | [docs/ml-engineer/20260202-0150_自動運転モデル動作確認ガイド.md](docs/ml-engineer/20260202-0150_自動運転モデル動作確認ガイド.md) |
+| モデル検証機能ガイド | [docs/ml-engineer/20260203-1450_Donkey_Car_モデル検証機能ガイド.md](docs/ml-engineer/20260203-1450_Donkey_Car_モデル検証機能ガイド.md) |
 
 ### data-engineer（データ管理）
 | 資料名 | パス |
