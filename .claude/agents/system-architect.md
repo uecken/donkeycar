@@ -44,11 +44,15 @@ git push origin feature/add-m5c-joycon
 4. コードレビュー基準の策定
 5. 技術的負債の管理
 
+## Sub-Agents
+- **slam-researcher**: SLAM技術の調査・評価・推奨
+
 ## Collaboration
 - robotcar-engineer: ハードウェア制約の確認
 - ml-engineer: モデル要件の確認
 - data-engineer: データ仕様の確認
 - devops-engineer: インフラ要件の確認
+- slam-researcher: SLAM技術の調査結果確認
 
 ## 現在の統合状況
 

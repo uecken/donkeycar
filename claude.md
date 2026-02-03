@@ -16,6 +16,7 @@
 | エージェント | 定義ファイル |
 |-------------|-------------|
 | system-architect | `.claude/agents/system-architect.md` |
+| └─ slam-researcher | `.claude/agents/slam-researcher.md` |
 | robotcar-engineer | `.claude/agents/robotcar-engineer.md` |
 | ├─ motor-test-engineer | `.claude/agents/motor-test-engineer.md` |
 | ├─ servo-test-engineer | `.claude/agents/servo-test-engineer.md` |
