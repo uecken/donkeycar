@@ -299,9 +299,43 @@ class ObstacleAvoidance:
 
 ---
 
-## 10. 関連資料
+## 10. Donkeycarでの手動アノテーション
+
+### 10.1 annotation_training_d2j
+
+Donkeycarでも**JetRacerスタイルの手動アノテーション**が可能。
+
+| 項目 | 内容 |
+|------|------|
+| **ツール** | [annotation_training_d2j](https://github.com/Romihi/annotation_training_d2j) |
+| **開発者** | Romihi氏 |
+| **機能** | クリックベースアノテーション + 学習 + Grad-CAM |
+
+```
+【annotation_training_d2jの流れ】
+画像収集 → GUIで手動アノテーション → 学習 → Donkey形式でエクスポート
+                    ↓
+         Donkeycarで直接使用可能
+```
+
+### 10.2 標準Donkeycarとの使い分け
+
+| シナリオ | 推奨方式 |
+|---------|---------|
+| 素早くデータ収集 | Donkeycar標準（自動記録） |
+| 精密なライン取り | annotation_training_d2j（手動） |
+| 既存データの修正 | annotation_training_d2j |
+| 学習品質の検証 | annotation_training_d2j（Grad-CAM） |
+
+詳細は [20260208-1800_annotation_training_d2jガイド.md](20260208-1800_annotation_training_d2jガイド.md) を参照。
+
+---
+
+## 11. 関連資料
 
 - [20260203-1700_DonkeyCar学習推論詳細ガイド.md](20260203-1700_DonkeyCar学習推論詳細ガイド.md) - Donkeycar 学習の詳細
 - [20260208-1730_プロジェクト現状まとめ.md](20260208-1730_プロジェクト現状まとめ.md) - 現状と優先課題
+- [20260208-1800_annotation_training_d2jガイド.md](20260208-1800_annotation_training_d2jガイド.md) - 手動アノテーションツール
 - [NVIDIA JetRacer](https://github.com/NVIDIA-AI-IOT/jetracer) - JetRacer 公式リポジトリ
 - [JetBot Road Following](https://github.com/NVIDIA-AI-IOT/jetbot/tree/master/notebooks/road_following) - JetBot アノテーション例
+- [Romihi/annotation_training_d2j](https://github.com/Romihi/annotation_training_d2j) - Donkeycar用手動アノテーションツール
