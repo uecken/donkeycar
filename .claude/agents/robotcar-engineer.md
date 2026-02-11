@@ -102,6 +102,7 @@ pio run -t upload          # アップロード
 | motor-test-engineer | ESC/モーターテスト | `.claude/agents/motor-test-engineer.md` |
 | servo-test-engineer | サーボテスト | `.claude/agents/servo-test-engineer.md` |
 | robot-controller-engineer | M5C_JOYCON統合 | `.claude/agents/robot-controller-engineer.md` |
+| meccha-engineer | 筐体/ホイール設計 | `.claude/agents/meccha-engineer.md` |
 
 ## Responsibilities
 1. ESC/サーボのPWMキャリブレーション
