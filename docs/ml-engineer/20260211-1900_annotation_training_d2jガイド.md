@@ -1,6 +1,7 @@
 # annotation_training_d2j ガイド
 
 **作成日**: 2026年2月8日 18:00
+**更新日**: 2026年2月11日 19:00
 **担当**: ml-engineer
 **目的**: Romihi氏のannotation_training_d2jツールを理解し、Donkeycarでの手動アノテーションを可能にする
 
@@ -74,7 +75,58 @@
 | throttle | Y座標から計算 | -1.0 〜 +1.0 |
 | location | 手動で0-7を選択 | 0 〜 7 |
 
-### 3.2 将来予測アノテーション
+### 3.2 各画像ごとのThrottle/Steering調整（2026-02-11追記）
+
+**結論: はい、各画像ごとにThrottleとSteeringを個別に調整できます。**
+
+#### 仕組み
+
+`utils/geometry_utils.py`で定義されている座標変換式:
+
+```python
+def normalize_coordinates(x, y, width, height):
+    # X座標を-1（左）から1（右）に変換
+    angle = (x / width) * 2 - 1
+
+    # Y座標を1（上）から-1（下）に変換
+    throttle = -((y / height) * 2 - 1)
+```
+
+| クリック位置 | 値 |
+|-------------|-----|
+| **X座標（左端）** | angle = -1.0 |
+| **X座標（中央）** | angle = 0.0 |
+| **X座標（右端）** | angle = +1.0 |
+| **Y座標（上端）** | throttle = +1.0 |
+| **Y座標（中央）** | throttle = 0.0 |
+| **Y座標（下端）** | throttle = -1.0 |
+
+#### 操作方法
+
+1. **画像をクリック** → その位置の(x, y)座標がangle, throttleに変換される
+2. **各画像に対して個別に適用** → `annotations[current_index]`に保存
+3. **再アノテーション可能** → 同じ画像を再度クリックすると上書き（履歴あり）
+
+#### 保存されるデータ構造
+
+```python
+{
+    "angle": -0.5,      # steering: -1.0 ~ +1.0
+    "throttle": 0.8,    # throttle: -1.0 ~ +1.0
+    "x": 40,            # ピクセル座標
+    "y": 24             # ピクセル座標
+}
+```
+
+#### 活用シーン
+
+| シーン | 説明 |
+|--------|------|
+| **ショートカット学習** | 同じような画像に異なるsteering値を手動で設定 |
+| **データ修正** | 実走行で記録された不適切な値を修正 |
+| **精密なライン取り** | 理想的なsteering/throttleを手動で定義 |
+
+### 3.3 将来予測アノテーション
 
 | 出力パターン | 内容 |
 |-------------|------|
@@ -83,7 +135,7 @@
 | 6出力 | + t+5フレーム先予測 |
 | 9出力 | + speed + t+5 + t+10予測 |
 
-### 3.3 物体検知アノテーション
+### 3.4 物体検知アノテーション
 
 - バウンディングボックス描画
 - セグメンテーションマスク
@@ -331,6 +383,7 @@ annotation_training_d2j（手動修正・精密化）
 2. 50+のモデルから選択して学習
 3. Grad-CAMで学習品質を可視化
 4. Donkey形式でエクスポート → Donkeycarで直接使用
+5. **各画像ごとにThrottle/Steeringを個別調整可能**（2026-02-11確認）
 
 ---
 
@@ -338,7 +391,7 @@ annotation_training_d2j（手動修正・精密化）
 
 - [20260208-1745_JetRacer_vs_Donkeycar比較.md](20260208-1745_JetRacer_vs_Donkeycar比較.md) - 学習方式の比較
 - [20260203-1700_DonkeyCar学習推論詳細ガイド.md](20260203-1700_DonkeyCar学習推論詳細ガイド.md) - 標準学習の詳細
-- [annotation_training_d2jガイド](../ml-engineer/annotation_training_d2j_guide.md) - 詳細ガイド（既存）
+- [20260211-1830_Donkeycar運転方式比較.md](20260211-1830_Donkeycar運転方式比較.md) - 運転方式（Deep Learning/CV/Path Follow）比較
 - [GitHub: Romihi/annotation_training_d2j](https://github.com/Romihi/annotation_training_d2j) - 公式リポジトリ
 
 ---
@@ -348,3 +401,4 @@ annotation_training_d2j（手動修正・精密化）
 | 日付 | 内容 |
 |------|------|
 | 2026-02-08 18:00 | 初版作成 |
+| 2026-02-11 19:00 | 各画像ごとのThrottle/Steering調整機能について追記（セクション3.2） |
